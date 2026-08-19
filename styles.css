@@ -2,10 +2,8 @@
 * { box-sizing: border-box; }
 body { margin: 0; color: var(--ink); background: #03080e; font: 17px/1.55 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
 main { padding: 0 0 5rem; }
-.hero { position: relative; min-height: min(780px, 75vw); display: grid; place-items: end start; overflow: hidden; border-bottom: 1px solid rgba(54, 175, 255, .55); }
-.hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: .78; }
-.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(3, 8, 14, .94) 0%, rgba(3, 8, 14, .55) 52%, rgba(3, 8, 14, .12) 100%); }
-.hero-copy { position: relative; z-index: 1; width: min(800px, calc(100% - 3rem)); margin: 0 auto; padding: 4.5rem 0; }
+.hero { width: 100%; line-height: 0; border-bottom: 1px solid rgba(54, 175, 255, .55); }
+.hero > img { display: block; width: 100%; height: auto; }
 .content { width: min(900px, calc(100% - 3rem)); margin: auto; padding-top: 4.5rem; }
 .eyebrow { color: var(--blue); font-weight: 750; letter-spacing: .11em; text-transform: uppercase; }
 h1, h2, h3 { line-height: 1.05; margin: .25em 0 .5em; }
@@ -24,4 +22,3 @@ p { max-width: 72ch; color: var(--muted); }
 a { color: #71c7ff; }
 nav { margin-bottom: 3.5rem; } nav a { font-weight: 700; text-decoration: none; }
 ul { color: var(--muted); }
-@media (max-width: 640px) { .hero { min-height: 42rem; } .hero::after { background: linear-gradient(0deg, rgba(3, 8, 14, .94), rgba(3, 8, 14, .35)); } }
