@@ -9,3 +9,7 @@ full-resolution print interior but does not replace or modify the Lulu-ready
 interior proof. Text, page order, and page size are preserved; only the cover,
 part, and chapter artwork is reduced to high-quality JPEG at approximately
 300 PPI for web delivery.
+
+The book build regenerates this PDF automatically whenever it rebuilds the
+Lulu interior. Publishing the changed companion file remains a separate,
+intentional repository action.
