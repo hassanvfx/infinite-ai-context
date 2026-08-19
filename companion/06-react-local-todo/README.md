@@ -9,10 +9,10 @@ Companion project for Chapter 6. It keeps fictional example tasks in browser
 2. From `starter/`, run `npm install` and then `npm run dev`.
 3. Open the local address Vite reports.
 
-Before asking an agent to edit anything, read `knowledge/index.md`, the two
-decisions, and the active journal. Follow `prompts/first-task.md`. Do not enter
-private or work-sensitive tasks into this learning project. Clearing browser
-storage clears the examples.
+Before asking an agent to edit anything, say “Check the journal and help me
+continue,” then follow `prompts/first-task.md`. ClineFlow automatically uses
+the project rules and context. Do not enter private or work-sensitive tasks
+into this learning project. Clearing browser storage clears the examples.
 
 ## Checks
 

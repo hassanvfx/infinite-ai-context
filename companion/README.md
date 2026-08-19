@@ -11,10 +11,11 @@ tracking, data collection, or private book-production material.
    Xcode, or Ollama for the relevant labs; non-developers can begin with the
    Markdown-based knowledge, fiction, or public-claims exercises.
 2. Choose one chapter directory below.
-3. Read its `README.md`, `knowledge/index.md`, current decision records, and
-   journal before asking an agent to change anything.
-4. Use the supplied discovery prompt. Approve a small plan, define success, run
-   the named check, and record the result in the journal.
+3. Open its `README.md`, then tell your installed ClineFlow agent, “Check the
+   journal and help me continue.” For a genuinely new task, say, “Start a
+   journal for this task.”
+4. Use the supplied plain-language prompt. Approve a small plan, define
+   success, run the named check, and ask the agent to update the journal.
 
 ## Labs
 
@@ -40,9 +41,11 @@ verify → journal → continue
 ```
 
 The durable context is in the repository—not in a particular agent’s chat
-history. A local or cloud agent can begin by reading the same index, decisions,
-sources, tests, and active journal. The human remains responsible for approvals,
-claims, creative canon, sensitive-data boundaries, and review.
+history. Once ClineFlow is installed, it automatically uses the project rules,
+context records, and relevant history in the background. You speak normally;
+the journal is the only continuity tool you need to name. The human remains
+responsible for approvals, claims, creative canon, sensitive-data boundaries,
+and review.
 
 ## Shared safety checklist
 

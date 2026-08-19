@@ -1,7 +1,7 @@
 # Discovery prompt
 
 ```text
-Read the knowledge index, decision, source record, and active journal. Do not
-edit. State confirmed facts, unknowns, source limitations, and the smallest next
-safe step. Do not convert an inference into a decision.
+Check the journal and help me understand this project. Do not edit anything.
+State confirmed facts, unknowns, source limitations, and the smallest next safe
+step. Keep an inference separate from a decision.
 ```
