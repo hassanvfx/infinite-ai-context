@@ -1,0 +1,6 @@
+:root { font-family: system-ui, sans-serif; color: #102a43; background: #f5f7fa; }
+body { margin: 0; } .wrap { max-width: 58rem; margin: auto; padding: 1.5rem; }
+.eyebrow { color: #1677ff; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1rem; }
+article { background: white; padding: 1rem; border-radius: .75rem; box-shadow: 0 1px 3px #102a4320; }
+a:focus-visible { outline: 3px solid #1677ff; outline-offset: 3px; }

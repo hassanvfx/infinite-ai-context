@@ -1,0 +1,10 @@
+:root { color-scheme: light dark; font-family: system-ui, sans-serif; }
+body { margin: 0; background: #f4f7fb; color: #102a43; }
+main { max-width: 52rem; margin: 0 auto; padding: 2rem 1rem; }
+.notice { border-left: .35rem solid #1677ff; padding-left: .75rem; }
+.summary, .card { background: white; border-radius: .75rem; padding: 1rem; margin: 1rem 0; box-shadow: 0 1px 3px #102a4320; }
+.summary, .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: 1rem; }
+.label { color: #486581; font-size: .9rem; }
+.amount { font-size: 1.4rem; font-weight: 700; }
+.over { color: #b42318; }
+@media (prefers-color-scheme: dark) { body { background: #102a43; color: #f0f4f8; } .summary, .card { background: #243b53; } .label { color: #bcccdc; } }

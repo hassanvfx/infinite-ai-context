@@ -1,0 +1,5 @@
+:root { font-family: system-ui, sans-serif; color: #172033; background: #f5f8fc; }
+main { max-width: 42rem; margin: 3rem auto; padding: 1.5rem; background: white; border-radius: .75rem; }
+form, li { display: flex; gap: .75rem; align-items: center; margin: .75rem 0; }
+label { flex: 1; } input:not([type="checkbox"]) { width: 100%; padding: .5rem; } button { padding: .5rem .75rem; }
+button:focus-visible, input:focus-visible { outline: 3px solid #1769e0; outline-offset: 2px; }
