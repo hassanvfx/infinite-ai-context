@@ -1,8 +1,9 @@
 # Infinite AI Context companion package
 
-This local package is prepared for a future public repository at
-`hassanvfx/infinite-ai-context`. It is not published by this workspace and does
-not authorize deployment, data collection, or release.
+This local package is the source for the public companion at
+<https://hassanvfx.github.io/infinite-ai-context/> and its repository at
+<https://github.com/hassanvfx/infinite-ai-context>. It contains no deployment
+tracking, data collection, or private book-production material.
 
 ## Start here
 
