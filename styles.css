@@ -17,6 +17,9 @@ p { max-width: 72ch; color: var(--muted); }
 .button-primary { color: #03101c; background: #5fc4ff; box-shadow: 0 0 28px rgba(75, 184, 255, .5); }
 .button-secondary { color: var(--ink); border-color: rgba(95, 196, 255, .8); background: rgba(13, 34, 54, .8); }
 .button:hover { transform: translateY(-1px); filter: brightness(1.08); }
+.install-action { margin: .9rem 0 0; }
+.install-action a { display: inline-block; color: var(--blue); font-weight: 800; text-decoration: none; letter-spacing: .01em; }
+.install-action a:hover { color: #fff; text-decoration: underline; }
 .edition-note { font-size: .9rem; }
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 2rem 0; }
 .card { display: block; min-height: 155px; padding: 1.35rem; color: var(--ink); text-decoration: none; background: linear-gradient(145deg, rgba(20, 75, 123, .78), var(--panel)); border: 1px solid rgba(54, 175, 255, .6); border-radius: .65rem; box-shadow: 0 0 25px rgba(18, 150, 255, .16); }
