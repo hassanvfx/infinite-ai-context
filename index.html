@@ -36,7 +36,11 @@
         <p class="lead"><span>Infinite AI Memory</span> across chats, agents and collaborators.</p>
         <section class="quick-install" aria-labelledby="quick-install-title">
           <p class="quick-install-label" id="quick-install-title">Quick Install</p>
-          <pre><code>please init a GH Repo if needed and then install ClineFlow from instuctions provided at https://github.com/hassanvfx/clineflow</code></pre>
+          <div class="quick-install-code">
+            <pre><code id="quick-install-prompt">please init a GH Repo if needed and then install ClineFlow from instuctions provided at https://github.com/hassanvfx/clineflow</code></pre>
+            <button class="copy-prompt" type="button" data-copy-target="quick-install-prompt" aria-label="Copy Quick Install prompt">Copy prompt</button>
+          </div>
+          <p class="copy-feedback" id="copy-feedback" role="status" aria-live="polite"></p>
         </section>
         <p class="learn-more-label">Learn More</p>
         <div class="actions" aria-label="Book editions">
@@ -81,5 +85,22 @@
         </div>
       </section>
     </main>
+    <script>
+      document.querySelectorAll('[data-copy-target]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const prompt = document.getElementById(button.dataset.copyTarget).textContent;
+          const feedback = document.getElementById('copy-feedback');
+          try {
+            await navigator.clipboard.writeText(prompt);
+            button.textContent = 'Copied!';
+            feedback.textContent = 'Quick Install prompt copied to your clipboard.';
+          } catch {
+            feedback.textContent = 'Copy failed. Select the prompt and copy it manually.';
+            return;
+          }
+          window.setTimeout(() => { button.textContent = 'Copy prompt'; }, 2200);
+        });
+      });
+    </script>
   </body>
 </html>

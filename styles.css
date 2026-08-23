@@ -17,8 +17,12 @@ p { max-width: 72ch; color: var(--muted); }
 .lead span { color: #00c5ff; }
 .quick-install { margin: 2.5rem 0 2.25rem; padding: clamp(1.25rem, 3vw, 2rem); background: rgba(8, 39, 66, .78); border: 1px solid rgba(54, 175, 255, .55); border-left: 4px solid var(--blue); }
 .quick-install-label, .learn-more-label, .episodes-kicker { margin: 0 0 .8rem; color: var(--blue); font-size: .8rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
-.quick-install pre { margin: 0; padding: 1.1rem 1.2rem; overflow-x: auto; color: #d7eeff; background: #06111d; border: 1px solid rgba(95, 196, 255, .3); border-radius: .35rem; white-space: pre-wrap; word-break: break-word; }
+.quick-install-code { position: relative; }
+.quick-install pre { margin: 0; padding: 1.1rem 7.75rem 1.1rem 1.2rem; overflow-x: auto; color: #d7eeff; background: #06111d; border: 1px solid rgba(95, 196, 255, .3); border-radius: .35rem; white-space: pre-wrap; word-break: break-word; }
 .quick-install code { font: .92rem/1.6 "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+.copy-prompt { position: absolute; top: .7rem; right: .7rem; padding: .48rem .7rem; color: #dff4ff; font: 800 .76rem/1 system-ui, sans-serif; letter-spacing: .03em; background: rgba(28, 135, 208, .24); border: 1px solid rgba(95, 196, 255, .75); border-radius: .28rem; cursor: pointer; }
+.copy-prompt:hover, .copy-prompt:focus-visible { color: #fff; background: rgba(45, 165, 244, .48); outline: none; }
+.copy-feedback { min-height: 1.5em; margin: .7rem 0 0; color: #9edbff; font-size: .88rem; }
 .learn-more-label { margin-top: 2.25rem; }
 .actions { display: flex; flex-wrap: wrap; gap: .85rem; margin-top: 1rem; }
 .button { display: inline-block; padding: .8rem 1.15rem; font-weight: 800; text-decoration: none; border: 1px solid transparent; border-radius: .35rem; }
@@ -34,7 +38,7 @@ p { max-width: 72ch; color: var(--muted); }
 .episodes h2 { margin-bottom: .35rem; font-size: clamp(2.25rem, 5vw, 4rem); }
 .episodes-intro { margin-top: 0; font-size: 1.18rem; }
 .episode-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.5rem, 3vw, 2.5rem); margin-top: 2rem; }
-.episode { min-width: 0; padding: 1rem; background: rgba(13, 34, 54, .78); border: 1px solid rgba(54, 175, 255, .48); border-radius: .55rem; box-shadow: 0 0 25px rgba(18, 150, 255, .12); }
+.episode { min-width: 0; }
 .episode > p { margin: 0 0 .8rem; color: var(--blue); font-size: .82rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
 .book-callout { margin-top: 5rem; padding: clamp(3rem, 7vw, 7rem) 1.5rem; background: radial-gradient(circle at 22% 50%, rgba(16, 122, 210, .18), transparent 32%), #071321; border-top: 1px solid rgba(95, 196, 255, .28); border-bottom: 1px solid rgba(95, 196, 255, .28); }
 .book-callout-inner { width: min(1200px, 100%); margin: auto; display: grid; grid-template-columns: minmax(250px, 390px) minmax(0, 1fr); align-items: center; gap: clamp(3rem, 8vw, 9rem); }
@@ -57,6 +61,8 @@ ul { color: var(--muted); }
   .quick-install { margin: 2rem 0; }
   .quick-install pre { padding: 1rem; }
   .quick-install code { font-size: .82rem; }
+  .quick-install pre { padding-top: 3.6rem; }
+  .copy-prompt { top: .75rem; right: .75rem; }
   .episode-grid { grid-template-columns: 1fr; gap: 1.25rem; }
   .book-callout { margin-top: 3.5rem; padding: 3.5rem 1.5rem; }
   .book-callout-inner { grid-template-columns: 1fr; gap: 2.5rem; }
