@@ -34,6 +34,8 @@ p { max-width: 72ch; color: var(--muted); }
 .github-icon { width: 1.4rem; height: 1.4rem; fill: currentColor; }
 .install-arrow { color: var(--blue); font-size: 1.35em; }
 .install-action a:hover { color: #fff; border-color: #fff; box-shadow: 0 0 32px rgba(75, 184, 255, .48); }
+.masterclass { margin-top: clamp(4.5rem, 10vw, 8rem); }
+.masterclass h2 { margin-bottom: 1.5rem; font-size: clamp(2rem, 4.2vw, 3.5rem); }
 .episodes { margin-top: clamp(4.5rem, 10vw, 8rem); }
 .episodes h2 { margin-bottom: .35rem; font-size: clamp(2.25rem, 5vw, 4rem); }
 .episodes-intro { margin-top: 0; font-size: 1.18rem; }
