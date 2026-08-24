@@ -2,8 +2,8 @@
 * { box-sizing: border-box; }
 body { margin: 0; color: var(--ink); background: #03080e; font: 17px/1.55 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
 main { padding: 0 0 5rem; }
-.image-hero { width: min(1500px, 100%); margin: 0 auto; padding: clamp(1rem, 3vw, 2.5rem) clamp(1rem, 4vw, 4rem) 0; }
-.image-hero img { display: block; width: 100%; height: auto; }
+.image-hero { width: 100%; max-width: 1500px; margin: 0 auto; padding: clamp(1rem, 3vw, 2.5rem) clamp(1rem, 4vw, 4rem) 0; overflow: hidden; }
+.image-hero img { display: block; width: 100%; max-width: 100%; height: auto; }
 .video-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; background: #02060b; box-shadow: 0 0 34px rgba(18, 150, 255, .16); }
 .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .video-frame-hero { box-shadow: 0 0 44px rgba(18, 150, 255, .28); }
