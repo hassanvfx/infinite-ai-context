@@ -52,6 +52,16 @@ p { max-width: 72ch; color: var(--muted); }
 .book-callout-tagline { color: #00b8ed !important; font-size: 1.35rem !important; }
 .book-callout-actions { margin-top: 2.25rem; }
 .book-callout-install { margin-top: 1.8rem; margin-bottom: 0; }
+.author-card { padding: clamp(4rem, 8vw, 7rem) 1.5rem; background: #03080e; }
+.author-card-inner { width: min(890px, 100%); margin: auto; display: grid; grid-template-columns: 190px minmax(0, 1fr); align-items: center; gap: clamp(2rem, 6vw, 5rem); }
+.author-avatar-link { display: block; justify-self: center; border-radius: 50%; }
+.author-avatar { display: block; width: min(190px, 42vw); aspect-ratio: 1; object-fit: cover; object-position: 50% 28%; border: 2px solid rgba(63, 183, 255, .8); border-radius: 50%; box-shadow: 0 0 0 8px rgba(18, 133, 218, .08), 0 0 42px rgba(22, 141, 255, .28); }
+.author-card-copy { max-width: 615px; }
+.author-card-kicker { margin: 0 0 .75rem; color: #00c5ff; font-size: .82rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+.author-card h2 { margin: 0 0 1.2rem; color: #fff; font-size: clamp(2rem, 5vw, 3.4rem); }
+.author-card p { margin: 0 0 1rem; font-size: 1.08rem; }
+.author-card-link { display: inline-flex; align-items: center; gap: .6rem; margin-top: .45rem; color: #66c5ff; font-weight: 800; text-decoration: none; }
+.author-card-link:hover { color: #fff; }
 a { color: #71c7ff; }
 nav { margin-bottom: 3.5rem; } nav a { font-weight: 700; text-decoration: none; }
 ul { color: var(--muted); }
@@ -72,4 +82,8 @@ ul { color: var(--muted); }
   .book-callout p { margin-left: auto; margin-right: auto; }
   .book-callout-actions { justify-content: center; }
   .book-callout-install { display: flex; justify-content: center; }
+  .author-card { padding: 3.75rem 1.5rem; }
+  .author-card-inner { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+  .author-card-copy { margin: auto; }
+  .author-card p { margin-left: auto; margin-right: auto; }
 }
