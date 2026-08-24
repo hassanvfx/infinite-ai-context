@@ -2,7 +2,8 @@
 * { box-sizing: border-box; }
 body { margin: 0; color: var(--ink); background: #03080e; font: 17px/1.55 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
 main { padding: 0 0 5rem; }
-.video-hero { width: min(1500px, 100%); margin: 0 auto; padding: clamp(1rem, 3vw, 2.5rem) clamp(1rem, 4vw, 4rem) 0; }
+.image-hero { width: min(1500px, 100%); margin: 0 auto; padding: clamp(1rem, 3vw, 2.5rem) clamp(1rem, 4vw, 4rem) 0; }
+.image-hero img { display: block; width: 100%; height: auto; }
 .video-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; background: #02060b; box-shadow: 0 0 34px rgba(18, 150, 255, .16); }
 .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .video-frame-hero { box-shadow: 0 0 44px rgba(18, 150, 255, .28); }
@@ -68,7 +69,7 @@ a { color: #71c7ff; }
 nav { margin-bottom: 3.5rem; } nav a { font-weight: 700; text-decoration: none; }
 ul { color: var(--muted); }
 @media (max-width: 720px) {
-  .video-hero { padding: 1rem 0 0; }
+  .image-hero { padding: 1rem 0 0; }
   .content { width: min(100% - 2rem, 1080px); padding-top: 3.5rem; }
   .quick-install { margin: 2rem 0; }
   .quick-install pre { padding: 1rem; }
