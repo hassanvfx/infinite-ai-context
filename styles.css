@@ -35,9 +35,17 @@ p { max-width: 72ch; color: var(--muted); }
 .github-icon { width: 1.4rem; height: 1.4rem; fill: currentColor; }
 .install-arrow { color: var(--blue); font-size: 1.35em; }
 .install-action a:hover { color: #fff; border-color: #fff; box-shadow: 0 0 32px rgba(75, 184, 255, .48); }
-.masterclass { margin-top: 0; padding-top: clamp(6.5rem, 15vw, 11rem); }
+.interlude { position: relative; isolation: isolate; margin-top: clamp(5rem, 12vw, 9rem); padding: clamp(2.25rem, 5vw, 4rem) clamp(1.25rem, 4vw, 3.5rem); overflow: hidden; border-top: 1px solid rgba(56, 178, 255, .72); border-bottom: 1px solid rgba(56, 178, 255, .36); background: linear-gradient(90deg, rgba(12, 63, 103, .82), rgba(3, 11, 19, .5) 64%, rgba(7, 32, 58, .55)); }
+.interlude::before { position: absolute; z-index: -1; inset: 0; background: radial-gradient(circle at 8% 50%, rgba(12, 180, 255, .25), transparent 30%), radial-gradient(circle at 92% 50%, rgba(29, 78, 216, .25), transparent 28%); content: ""; }
+.interlude-title { margin: 0 0 .9rem; color: #1ea4ff; font-size: clamp(1rem, 2.2vw, 1.45rem); font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
+.interlude-lead { max-width: 24ch; margin: 0; color: #f1f8ff; font-size: clamp(2rem, 5vw, 4.65rem); font-weight: 800; letter-spacing: -.045em; line-height: .98; }
+.interlude-note { margin: 1.35rem 0 0; color: #acd8f7; font-size: clamp(.9rem, 1.75vw, 1.1rem); font-style: italic; }
+.interlude-workflow { margin-top: clamp(5rem, 12vw, 9rem); text-align: right; background: linear-gradient(270deg, rgba(12, 63, 103, .82), rgba(3, 11, 19, .5) 64%, rgba(7, 32, 58, .55)); }
+.interlude-workflow::before { background: radial-gradient(circle at 92% 50%, rgba(12, 180, 255, .25), transparent 30%), radial-gradient(circle at 8% 50%, rgba(29, 78, 216, .25), transparent 28%); }
+.interlude-workflow .interlude-lead { margin-left: auto; }
+.masterclass { margin-top: 0; padding-top: clamp(4rem, 9vw, 7rem); }
 .masterclass h2 { margin-bottom: 1.5rem; font-size: clamp(2rem, 4.2vw, 3.5rem); }
-.episodes { margin-top: clamp(6.5rem, 15vw, 11rem); }
+.episodes { margin-top: clamp(4rem, 9vw, 7rem); }
 .episodes h2 { margin-bottom: .35rem; font-size: clamp(2.25rem, 5vw, 4rem); }
 .episodes-intro { margin-top: 0; font-size: 1.18rem; }
 .episode-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.5rem, 3vw, 2.5rem); margin-top: 2rem; }
@@ -76,6 +84,9 @@ ul { color: var(--muted); }
   .quick-install code { font-size: .82rem; }
   .quick-install pre { padding-top: 3.6rem; }
   .copy-prompt { top: .75rem; right: .75rem; }
+  .interlude { padding: 2rem 1.25rem; }
+  .interlude-workflow { text-align: left; }
+  .interlude-workflow .interlude-lead { margin-left: 0; }
   .episode-grid { grid-template-columns: 1fr; gap: 1.25rem; }
   .book-callout { margin-top: 3.5rem; padding: 3.5rem 1.5rem; }
   .book-callout-inner { grid-template-columns: 1fr; gap: 2.5rem; }
