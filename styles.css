@@ -45,8 +45,27 @@ p { max-width: 72ch; color: var(--muted); }
 .context-problem h3 { max-width: 15ch; margin: 0; color: #f2f8ff; font-size: clamp(1.55rem, 3vw, 2.65rem); }
 .context-problem-copy > p:last-child { margin: 1.1rem 0 0; color: #aac7dc; font-size: 1rem; line-height: 1.65; }
 .context-problem-image { margin: 0; }
-.context-problem-image img { display: block; width: 100%; height: auto; box-shadow: 0 14px 42px rgba(0, 0, 0, .34); }
+.lightbox-trigger { position: relative; display: block; width: 100%; padding: 0; overflow: hidden; cursor: zoom-in; background: #010408; border: 0; }
+.context-problem-image img { display: block; width: 100%; height: auto; box-shadow: 0 14px 42px rgba(0, 0, 0, .34); transition: transform .28s ease, opacity .28s ease; }
+.lightbox-trigger:hover img, .lightbox-trigger:focus-visible img { opacity: .88; transform: scale(1.018); }
+.lightbox-trigger:focus-visible { outline: 2px solid #6ed0ff; outline-offset: 4px; }
+.lightbox-hint { position: absolute; right: .8rem; bottom: .8rem; padding: .38rem .58rem; color: #effaff; font-size: .72rem; font-weight: 800; letter-spacing: .06em; background: rgba(0, 9, 18, .82); border: 1px solid rgba(111, 210, 255, .65); border-radius: .2rem; opacity: 0; transform: translateY(4px); transition: opacity .2s ease, transform .2s ease; }
+.lightbox-trigger:hover .lightbox-hint, .lightbox-trigger:focus-visible .lightbox-hint { opacity: 1; transform: translateY(0); }
 .context-problem-image figcaption { margin-top: .7rem; color: #8caabe; font-size: .78rem; line-height: 1.45; }
+.lightbox { width: min(96vw, 1660px); max-width: none; max-height: 94vh; margin: auto; padding: 0; overflow: hidden; color: #eaf6ff; background: #03080e; border: 1px solid rgba(93, 195, 255, .62); box-shadow: 0 0 54px rgba(17, 145, 255, .28); }
+.lightbox::backdrop { background: rgba(0, 4, 9, .88); backdrop-filter: blur(6px); }
+.lightbox-inner { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; max-height: calc(94vh - 2px); }
+.lightbox-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .85rem 1rem; background: #071a2b; border-bottom: 1px solid rgba(93, 195, 255, .26); }
+.lightbox-title { margin: 0; color: #cdeaff; font-size: .85rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.lightbox-close { display: grid; width: 2rem; height: 2rem; padding: 0; color: #eaf6ff; font-size: 1.75rem; line-height: 1; cursor: pointer; background: transparent; border: 1px solid rgba(133, 210, 255, .55); border-radius: 50%; place-items: center; }
+.lightbox-close:hover, .lightbox-close:focus-visible { background: rgba(40, 153, 230, .28); outline: none; }
+.lightbox-body { display: grid; min-height: 0; padding: clamp(.5rem, 1.5vw, 1rem); overflow: auto; background: #010408; place-items: center; }
+.lightbox-image { display: block; max-width: 100%; max-height: calc(94vh - 11rem); object-fit: contain; }
+.lightbox-footer { padding: .8rem 1rem 1rem; background: #071321; border-top: 1px solid rgba(93, 195, 255, .2); }
+.lightbox-footer p { margin: 0 0 .45rem; color: #8dbedd; font-size: .72rem; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+.lightbox-notes { display: flex; flex-wrap: wrap; gap: .38rem .75rem; }
+.lightbox-notes a { color: #75caff; font-size: .82rem; font-weight: 700; }
+.lightbox-notes a:hover { color: #fff; }
 .deck-viewer { margin-top: clamp(2rem, 5vw, 3.5rem); padding: clamp(1rem, 3vw, 1.75rem); text-align: left; background: rgba(2, 9, 16, .84); border: 1px solid rgba(88, 193, 255, .48); box-shadow: 0 0 38px rgba(13, 137, 225, .18); }
 .deck-viewer-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
 .deck-viewer-kicker { margin: 0 0 .35rem; color: #27b5ff; font-size: .72rem; font-weight: 850; letter-spacing: .14em; text-transform: uppercase; }
@@ -117,6 +136,11 @@ ul { color: var(--muted); }
   .interlude { padding: 2rem 1.25rem; }
   .context-problem { grid-template-columns: 1fr; gap: 1.5rem; padding: 1.25rem; }
   .context-problem h3 { max-width: 18ch; }
+  .lightbox { width: min(100vw - 1rem, 1660px); max-height: 96vh; }
+  .lightbox-inner { max-height: calc(96vh - 2px); }
+  .lightbox-image { max-height: calc(96vh - 13.5rem); }
+  .lightbox-hint { opacity: 1; transform: none; }
+  .lightbox-footer { max-height: 8rem; overflow: auto; }
   .deck-viewer-header { align-items: flex-start; flex-direction: column; }
   .deck-open-link { width: 100%; text-align: center; }
   .pdf-stage { padding: .4rem; min-height: 160px; }

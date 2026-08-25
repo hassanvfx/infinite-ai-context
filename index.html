@@ -137,7 +137,10 @@
               <p>Models are becoming more capable, but project context is still fragile. When a chat closes or an agent changes, plans, constraints, decisions, and verification history can disappear with it. ClineFlow makes that working knowledge durable, portable, and automatic.</p>
             </div>
             <figure class="context-problem-image">
-              <img src="assets/ai-context-open-problem.png" alt="A collection of public posts discussing the challenge of durable agent memory and AI context">
+              <button class="lightbox-trigger" type="button" data-lightbox-src="assets/ai-context-open-problem.png" data-lightbox-alt="A collection of public posts discussing the challenge of durable agent memory and AI context" data-lightbox-title="The agent-memory discussion" data-lightbox-notes='[{"label":"Sama Bhattacharjee","href":"https://www.linkedin.com/feed/update/urn:li:activity:7496316059814088705/?dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287496365429309915136%2Curn%3Ali%3Aactivity%3A7496316059814088705%29"},{"label":"Kshitij Verma","href":"https://www.linkedin.com/feed/update/urn:li:activity:7495808721856483328/?dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287496330330321125377%2Curn%3Ali%3Aactivity%3A7495808721856483328%29"},{"label":"Vanessa Chang","href":"https://www.linkedin.com/posts/vanessachang_media-attachment-ugcPost-7496346168357003265-p4LF/?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAADIu56sBklF6Xcgz74n8BPMOE5UBU_a9vTw"},{"label":"Aman Dey","href":"https://www.linkedin.com/posts/amanintech_memory-in-ai-agents-is-still-one-of-the-most-ugcPost-7495138739447590912-RcBr/?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAADIu56sBklF6Xcgz74n8BPMOE5UBU_a9vTw"},{"label":"Thiyagarajan Subramanian","href":"https://www.linkedin.com/posts/tsubraman_agentmemory-share-7496039240263385088-UlwL/?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAADIu56sBklF6Xcgz74n8BPMOE5UBU_a9vTw"},{"label":"Cornelius George","href":"https://www.linkedin.com/posts/corneliusmgeorge_persistent-agent-memory-is-the-current-the-ugcPost-7495990405277200384-c81x/?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAADIu56sBklF6Xcgz74n8BPMOE5UBU_a9vTw"},{"label":"Jessie Mongeon","href":"https://www.linkedin.com/posts/jessie-mongeon_the-hard-part-of-agent-memory-isnt-the-model-ugcPost-7495524758885715968-lwjv/?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAADIu56sBklF6Xcgz74n8BPMOE5UBU_a9vTw"}]' aria-haspopup="dialog" aria-label="Open the agent-memory discussion image full screen">
+                <img src="assets/ai-context-open-problem.png" alt="A collection of public posts discussing the challenge of durable agent memory and AI context">
+                <span class="lightbox-hint" aria-hidden="true">Tap to enlarge ↗</span>
+              </button>
               <figcaption>Examples of the wider conversation around durable agent context and memory.</figcaption>
             </figure>
           </section>
@@ -246,6 +249,48 @@
           }
           window.setTimeout(() => { button.textContent = 'Copy prompt'; }, 2200);
         });
+      });
+
+      const lightbox = document.createElement('dialog');
+      lightbox.className = 'lightbox';
+      lightbox.innerHTML = `
+        <div class="lightbox-inner">
+          <header class="lightbox-header">
+            <p class="lightbox-title"></p>
+            <button class="lightbox-close" type="button" aria-label="Close image">×</button>
+          </header>
+          <div class="lightbox-body"><img class="lightbox-image" alt=""></div>
+          <footer class="lightbox-footer"><p>Source posts</p><div class="lightbox-notes"></div></footer>
+        </div>`;
+      document.body.append(lightbox);
+
+      const lightboxImage = lightbox.querySelector('.lightbox-image');
+      const lightboxTitle = lightbox.querySelector('.lightbox-title');
+      const lightboxNotes = lightbox.querySelector('.lightbox-notes');
+      const closeLightbox = () => lightbox.close();
+
+      document.querySelectorAll('.lightbox-trigger').forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+          let notes = [];
+          try { notes = JSON.parse(trigger.dataset.lightboxNotes || '[]'); } catch { notes = []; }
+          lightboxImage.src = trigger.dataset.lightboxSrc;
+          lightboxImage.alt = trigger.dataset.lightboxAlt || '';
+          lightboxTitle.textContent = trigger.dataset.lightboxTitle || 'Image preview';
+          lightboxNotes.replaceChildren(...notes.map((note) => {
+            const link = document.createElement('a');
+            link.href = note.href;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            link.textContent = note.label;
+            return link;
+          }));
+          lightbox.showModal();
+        });
+      });
+      lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', (event) => {
+        const bounds = lightbox.getBoundingClientRect();
+        if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) closeLightbox();
       });
     </script>
     <script type="module">
