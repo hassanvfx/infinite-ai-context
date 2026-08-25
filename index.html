@@ -141,6 +141,17 @@
               <figcaption>Examples of the wider conversation around durable agent context and memory.</figcaption>
             </figure>
           </section>
+        </section>
+        <section class="masterclass" aria-labelledby="masterclass-title">
+          <p class="episodes-kicker">ClineFlow Masterclass</p>
+          <h2 id="masterclass-title">Watch the Full 30-Minute Masterclass</h2>
+          <div class="video-frame">
+            <iframe loading="lazy" src="https://player.vimeo.com/video/1220645170?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="ClineFlow full 30-minute masterclass" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe>
+          </div>
+        </section>
+        <section class="interlude interlude-workflow" aria-label="ClineFlow workflow">
+          <p class="interlude-title">ClineFlow: WorkFlow</p>
+          <p class="interlude-lead">Spec + Goals for Automatic Dev Loop</p>
           <section class="deck-viewer" data-deck-viewer data-pdf-url="assets/clineflow-deck.pdf" aria-labelledby="deck-viewer-title">
             <div class="deck-viewer-header">
               <div>
@@ -159,17 +170,6 @@
               <button type="button" data-deck-next disabled>Next →</button>
             </div>
           </section>
-        </section>
-        <section class="masterclass" aria-labelledby="masterclass-title">
-          <p class="episodes-kicker">ClineFlow Masterclass</p>
-          <h2 id="masterclass-title">Watch the Full 30-Minute Masterclass</h2>
-          <div class="video-frame">
-            <iframe loading="lazy" src="https://player.vimeo.com/video/1220645170?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="ClineFlow full 30-minute masterclass" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe>
-          </div>
-        </section>
-        <section class="interlude interlude-workflow" aria-label="ClineFlow workflow">
-          <p class="interlude-title">ClineFlow: WorkFlow</p>
-          <p class="interlude-lead">Spec + Goals for Automatic Dev Loop</p>
         </section>
         <section class="episodes" aria-labelledby="episodes-title">
           <p class="episodes-kicker">Watch Per Episode</p>
@@ -265,6 +265,16 @@
         let renderVersion = 0;
         let resizeTimer;
 
+        if (window.location.protocol === 'file:') {
+          const nativeViewer = document.createElement('iframe');
+          nativeViewer.className = 'pdf-native-viewer';
+          nativeViewer.src = `${deckViewer.dataset.pdfUrl}#page=2`;
+          nativeViewer.title = 'ClineFlow Technical Deck, page 2';
+          stage.replaceChildren(nativeViewer);
+          stage.setAttribute('aria-busy', 'false');
+          previous.closest('.deck-controls').hidden = true;
+        } else {
+
         const updateControls = () => {
           previous.disabled = !pdf || rendering || pageNumber <= 1;
           next.disabled = !pdf || rendering || pageNumber >= pdf.numPages;
@@ -352,6 +362,7 @@
           observer.observe(deckViewer);
         } else {
           startDeck();
+        }
         }
       }
     </script>
