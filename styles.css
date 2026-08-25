@@ -40,6 +40,27 @@ p { max-width: 72ch; color: var(--muted); }
 .interlude-title { margin: 0 0 .9rem; color: #1ea4ff; font-size: clamp(1rem, 2.2vw, 1.45rem); font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
 .interlude-lead { max-width: 24ch; margin: 0; color: #f1f8ff; font-size: clamp(2rem, 5vw, 4.65rem); font-weight: 800; letter-spacing: -.045em; line-height: .98; }
 .interlude-note { margin: 1.35rem 0 0; color: #acd8f7; font-size: clamp(.9rem, 1.75vw, 1.1rem); font-style: italic; }
+.context-problem { display: grid; grid-template-columns: minmax(0, .9fr) minmax(280px, 1.1fr); align-items: center; gap: clamp(1.5rem, 4vw, 3.5rem); margin-top: clamp(2.5rem, 6vw, 4.5rem); padding: clamp(1.25rem, 3vw, 2.25rem); background: rgba(1, 7, 13, .64); border-top: 1px solid rgba(95, 196, 255, .35); border-bottom: 1px solid rgba(95, 196, 255, .2); }
+.context-problem-kicker { margin: 0 0 .65rem; color: #27b5ff; font-size: .75rem; font-weight: 850; letter-spacing: .15em; text-transform: uppercase; }
+.context-problem h3 { max-width: 15ch; margin: 0; color: #f2f8ff; font-size: clamp(1.55rem, 3vw, 2.65rem); }
+.context-problem-copy > p:last-child { margin: 1.1rem 0 0; color: #aac7dc; font-size: 1rem; line-height: 1.65; }
+.context-problem-image { margin: 0; }
+.context-problem-image img { display: block; width: 100%; height: auto; box-shadow: 0 14px 42px rgba(0, 0, 0, .34); }
+.context-problem-image figcaption { margin-top: .7rem; color: #8caabe; font-size: .78rem; line-height: 1.45; }
+.deck-viewer { margin-top: clamp(2rem, 5vw, 3.5rem); padding: clamp(1rem, 3vw, 1.75rem); text-align: left; background: rgba(2, 9, 16, .84); border: 1px solid rgba(88, 193, 255, .48); box-shadow: 0 0 38px rgba(13, 137, 225, .18); }
+.deck-viewer-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+.deck-viewer-kicker { margin: 0 0 .35rem; color: #27b5ff; font-size: .72rem; font-weight: 850; letter-spacing: .14em; text-transform: uppercase; }
+.deck-viewer h3 { margin: 0; color: #f1f8ff; font-size: clamp(1.15rem, 2.6vw, 1.75rem); }
+.deck-open-link { flex: 0 0 auto; padding: .5rem .7rem; color: #bde8ff; font-size: .85rem; font-weight: 800; text-decoration: none; border: 1px solid rgba(95, 196, 255, .62); border-radius: .3rem; }
+.deck-open-link:hover, .deck-open-link:focus-visible { color: #fff; border-color: #fff; outline: none; }
+.pdf-stage { display: grid; min-height: 220px; margin-top: 1.25rem; padding: .75rem; overflow: hidden; background: #010408; border: 1px solid rgba(95, 196, 255, .24); place-items: center; }
+.pdf-canvas { display: block; max-width: 100%; height: auto; box-shadow: 0 0 28px rgba(25, 155, 255, .2); }
+.pdf-status { margin: 1rem 0; color: #acd8f7; text-align: center; }
+.deck-controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .75rem; margin-top: 1rem; color: #b8d8ed; font-size: .9rem; }
+.deck-controls button { padding: .5rem .75rem; color: #dff4ff; font: 800 .82rem/1 system-ui, sans-serif; background: rgba(28, 135, 208, .2); border: 1px solid rgba(95, 196, 255, .6); border-radius: .28rem; cursor: pointer; }
+.deck-controls button:hover:not(:disabled), .deck-controls button:focus-visible:not(:disabled) { color: #fff; background: rgba(45, 165, 244, .45); outline: none; }
+.deck-controls button:disabled { opacity: .45; cursor: not-allowed; }
+.deck-controls input { width: 4rem; padding: .32rem .4rem; color: #eaf6ff; font: inherit; text-align: center; background: #06111d; border: 1px solid rgba(95, 196, 255, .48); border-radius: .22rem; }
 .interlude-workflow { margin-top: clamp(5rem, 12vw, 9rem); text-align: right; background: linear-gradient(270deg, rgba(12, 63, 103, .82), rgba(3, 11, 19, .5) 64%, rgba(7, 32, 58, .55)); }
 .interlude-workflow::before { background: radial-gradient(circle at 92% 50%, rgba(12, 180, 255, .25), transparent 30%), radial-gradient(circle at 8% 50%, rgba(29, 78, 216, .25), transparent 28%); }
 .interlude-workflow .interlude-lead { margin-left: auto; }
@@ -48,9 +69,17 @@ p { max-width: 72ch; color: var(--muted); }
 .episodes { margin-top: clamp(4rem, 9vw, 7rem); }
 .episodes h2 { margin-bottom: .35rem; font-size: clamp(2.25rem, 5vw, 4rem); }
 .episodes-intro { margin-top: 0; font-size: 1.18rem; }
+.episode-group { margin-top: clamp(2.75rem, 6vw, 4.5rem); }
+.episode-group-continue { margin-top: clamp(5rem, 10vw, 8rem); padding-top: clamp(2.5rem, 6vw, 4.5rem); border-top: 1px solid rgba(56, 178, 255, .45); }
+.episode-group-heading { margin-bottom: 2rem; }
+.episode-group-heading p { margin: 0 0 .45rem; color: var(--blue); font-size: .78rem; font-weight: 850; letter-spacing: .14em; text-transform: uppercase; }
+.episode-group-heading h3 { margin: 0; color: #f1f8ff; font-size: clamp(1.75rem, 3.8vw, 3rem); }
+.episode-group-heading span { display: block; margin-top: .7rem; color: #a9c5dd; font-size: 1.05rem; }
 .episode-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.5rem, 3vw, 2.5rem); margin-top: 2rem; }
 .episode { min-width: 0; }
 .episode > p { margin: 0 0 .8rem; color: var(--blue); font-size: .82rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.episode h3 { margin: 1.05rem 0 .42rem; color: #eaf6ff; font-size: 1.18rem; }
+.episode .episode-blurb { margin: 0; color: #93b3cb; font-size: .84rem; font-weight: 400; letter-spacing: .01em; line-height: 1.65; text-transform: none; }
 .book-callout { margin-top: 5rem; padding: clamp(3rem, 7vw, 7rem) 1.5rem; background: radial-gradient(circle at 22% 50%, rgba(16, 122, 210, .18), transparent 32%), #071321; border-top: 1px solid rgba(95, 196, 255, .28); border-bottom: 1px solid rgba(95, 196, 255, .28); }
 .book-callout-inner { width: min(1200px, 100%); margin: auto; display: grid; grid-template-columns: minmax(250px, 390px) minmax(0, 1fr); align-items: center; gap: clamp(3rem, 8vw, 9rem); }
 .book-callout-cover { justify-self: center; }
@@ -85,6 +114,11 @@ ul { color: var(--muted); }
   .quick-install pre { padding-top: 3.6rem; }
   .copy-prompt { top: .75rem; right: .75rem; }
   .interlude { padding: 2rem 1.25rem; }
+  .context-problem { grid-template-columns: 1fr; gap: 1.5rem; padding: 1.25rem; }
+  .context-problem h3 { max-width: 18ch; }
+  .deck-viewer-header { align-items: flex-start; flex-direction: column; }
+  .deck-open-link { width: 100%; text-align: center; }
+  .pdf-stage { padding: .4rem; min-height: 160px; }
   .interlude-workflow { text-align: left; }
   .interlude-workflow .interlude-lead { margin-left: 0; }
   .episode-grid { grid-template-columns: 1fr; gap: 1.25rem; }

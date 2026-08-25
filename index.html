@@ -130,6 +130,35 @@
           <p class="interlude-title">ClineFlow: Agentic AI Knowledge Base</p>
           <p class="interlude-lead">100% Automatic Context Journaling</p>
           <p class="interlude-note">* Google’s Open Knowledge Format Compatible</p>
+          <section class="context-problem" aria-labelledby="context-problem-title">
+            <div class="context-problem-copy">
+              <p class="context-problem-kicker">The Problem</p>
+              <h3 id="context-problem-title">AI Context Is an Open Problem in Agentic Development</h3>
+              <p>Models are becoming more capable, but project context is still fragile. When a chat closes or an agent changes, plans, constraints, decisions, and verification history can disappear with it. ClineFlow makes that working knowledge durable, portable, and automatic.</p>
+            </div>
+            <figure class="context-problem-image">
+              <img src="assets/ai-context-open-problem.png" alt="A collection of public posts discussing the challenge of durable agent memory and AI context">
+              <figcaption>Examples of the wider conversation around durable agent context and memory.</figcaption>
+            </figure>
+          </section>
+          <section class="deck-viewer" data-deck-viewer data-pdf-url="assets/clineflow-deck.pdf" aria-labelledby="deck-viewer-title">
+            <div class="deck-viewer-header">
+              <div>
+                <p class="deck-viewer-kicker">Interactive Presentation</p>
+                <h3 id="deck-viewer-title">ClineFlow Technical Deck</h3>
+              </div>
+              <a class="deck-open-link" href="assets/clineflow-deck.pdf" target="_blank" rel="noopener noreferrer">Open PDF ↗</a>
+            </div>
+            <div class="pdf-stage" aria-busy="true">
+              <canvas class="pdf-canvas" aria-label="ClineFlow Technical Deck page"></canvas>
+              <p class="pdf-status" role="status" aria-live="polite">Loading the presentation…</p>
+            </div>
+            <div class="deck-controls" aria-label="Presentation controls">
+              <button type="button" data-deck-prev disabled>← Previous</button>
+              <label>Page <input data-deck-page type="number" min="1" value="2" inputmode="numeric" aria-label="Deck page number"> <span data-deck-total>of 48</span></label>
+              <button type="button" data-deck-next disabled>Next →</button>
+            </div>
+          </section>
         </section>
         <section class="masterclass" aria-labelledby="masterclass-title">
           <p class="episodes-kicker">ClineFlow Masterclass</p>
@@ -146,16 +175,24 @@
           <p class="episodes-kicker">Watch Per Episode</p>
           <h2 id="episodes-title">ClineFlow Video Series</h2>
           <p class="episodes-intro">Eight short videos that explain the ClineFlow workflow.</p>
-          <div class="episode-grid">
-            <article class="episode"><p>Part 01 · Intro</p><div class="video-frame"><iframe loading="lazy" src="https://player.vimeo.com/video/1220645171?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="Part 1: Intro" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe></div></article>
-            <article class="episode"><p>Part 02 · Spec Grounding</p><div class="video-frame"><iframe loading="lazy" src="https://player.vimeo.com/video/1220645172?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="Part 2: Spec Grounding" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe></div></article>
-            <article class="episode"><p>Part 03 · Tests &amp; Verification</p><div class="video-frame"><iframe loading="lazy" src="https://player.vimeo.com/video/1220645169?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="Part 3: Tests and Verification" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe></div></article>
-            <article class="episode"><p>Part 04 · Development Loop</p><div class="video-frame"><iframe loading="lazy" src="https://player.vimeo.com/video/1220645227?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="Part 4: Development Loop" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe></div></article>
-            <article class="episode"><p>Part 05 · Ship to GitHub</p><div class="video-frame"><iframe loading="lazy" src="https://player.vimeo.com/video/1220645306?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="Part 5: Ship to GitHub" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe></div></article>
-            <article class="episode"><p>Part 06 · Collaborate</p><div class="video-frame"><iframe loading="lazy" src="https://player.vimeo.com/video/1220645329?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="Part 6: Collaborate" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe></div></article>
-            <article class="episode"><p>Part 07 · Recap</p><div class="video-frame"><iframe loading="lazy" src="https://player.vimeo.com/video/1220645333?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="Part 7: Recap" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe></div></article>
-            <article class="episode"><p>Part 08 · Closing</p><div class="video-frame"><iframe loading="lazy" src="https://player.vimeo.com/video/1220645339?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="Part 8: Closing" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe></div></article>
-          </div>
+          <section class="episode-group" aria-labelledby="episode-group-foundations">
+            <header class="episode-group-heading"><p>Part I</p><h3 id="episode-group-foundations">Ground the Work</h3><span>From a blank chat to a verified development loop.</span></header>
+            <div class="episode-grid">
+              <article class="episode"><p>Part 01 · Intro</p><div class="video-frame"><iframe loading="lazy" src="https://player.vimeo.com/video/1220645171?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="Part 1: Intro" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe></div><h3>Why context disappears</h3><p class="episode-blurb">See why every new chat starts incomplete—and how ClineFlow keeps the real project story available.</p></article>
+              <article class="episode"><p>Part 02 · Spec Grounding</p><div class="video-frame"><iframe loading="lazy" src="https://player.vimeo.com/video/1220645172?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="Part 2: Spec Grounding" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe></div><h3>Turn intent into a contract</h3><p class="episode-blurb">Use goals, constraints, assumptions, and decisions to ground the work before an agent changes code.</p></article>
+              <article class="episode"><p>Part 03 · Tests &amp; Verification</p><div class="video-frame"><iframe loading="lazy" src="https://player.vimeo.com/video/1220645169?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="Part 3: Tests and Verification" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe></div><h3>Make success observable</h3><p class="episode-blurb">Define the checks that prove a change works, so the agent can verify instead of merely declaring completion.</p></article>
+              <article class="episode"><p>Part 04 · Development Loop</p><div class="video-frame"><iframe loading="lazy" src="https://player.vimeo.com/video/1220645227?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="Part 4: Development Loop" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe></div><h3>Run the automatic loop</h3><p class="episode-blurb">Follow the durable rhythm: ground, plan, execute, verify, journal, and carry the next step forward.</p></article>
+            </div>
+          </section>
+          <section class="episode-group episode-group-continue" aria-labelledby="episode-group-continuity">
+            <header class="episode-group-heading"><p>Part II</p><h3 id="episode-group-continuity">Carry the Work Forward</h3><span>Move from a verified local slice to durable collaboration.</span></header>
+            <div class="episode-grid">
+              <article class="episode"><p>Part 05 · Ship to GitHub</p><div class="video-frame"><iframe loading="lazy" src="https://player.vimeo.com/video/1220645306?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="Part 5: Ship to GitHub" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe></div><h3>Preserve the verified slice</h3><p class="episode-blurb">Commit and ship the work with a clear, durable handoff instead of leaving important context in a chat window.</p></article>
+              <article class="episode"><p>Part 06 · Collaborate</p><div class="video-frame"><iframe loading="lazy" src="https://player.vimeo.com/video/1220645329?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="Part 6: Collaborate" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe></div><h3>Share context, not transcripts</h3><p class="episode-blurb">Give a new agent or collaborator the durable project record they need to continue without a long re-brief.</p></article>
+              <article class="episode"><p>Part 07 · Recap</p><div class="video-frame"><iframe loading="lazy" src="https://player.vimeo.com/video/1220645333?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="Part 7: Recap" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe></div><h3>Review the operating model</h3><p class="episode-blurb">Revisit the habits that make project knowledge portable, inspectable, and useful beyond a single model or session.</p></article>
+              <article class="episode"><p>Part 08 · Closing</p><div class="video-frame"><iframe loading="lazy" src="https://player.vimeo.com/video/1220645339?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="Part 8: Closing" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe></div><h3>Keep the memory compounding</h3><p class="episode-blurb">Close the loop with a journaled, verified commit so the next task begins from what the project already knows.</p></article>
+            </div>
+          </section>
         </section>
       </section>
 
@@ -210,6 +247,113 @@
           window.setTimeout(() => { button.textContent = 'Copy prompt'; }, 2200);
         });
       });
+    </script>
+    <script type="module">
+      const deckViewer = document.querySelector('[data-deck-viewer]');
+
+      if (deckViewer) {
+        const stage = deckViewer.querySelector('.pdf-stage');
+        const canvas = deckViewer.querySelector('.pdf-canvas');
+        const status = deckViewer.querySelector('.pdf-status');
+        const previous = deckViewer.querySelector('[data-deck-prev]');
+        const next = deckViewer.querySelector('[data-deck-next]');
+        const pageInput = deckViewer.querySelector('[data-deck-page]');
+        const pageTotal = deckViewer.querySelector('[data-deck-total]');
+        let pdf;
+        let pageNumber = 2;
+        let rendering = false;
+        let renderVersion = 0;
+        let resizeTimer;
+
+        const updateControls = () => {
+          previous.disabled = !pdf || rendering || pageNumber <= 1;
+          next.disabled = !pdf || rendering || pageNumber >= pdf.numPages;
+          pageInput.value = pageNumber;
+        };
+
+        const renderPage = async (requestedPage = pageNumber) => {
+          if (!pdf || rendering) return;
+          rendering = true;
+          pageNumber = Math.max(1, Math.min(Number(requestedPage) || 1, pdf.numPages));
+          const version = ++renderVersion;
+          updateControls();
+          stage.setAttribute('aria-busy', 'true');
+          status.hidden = false;
+          status.textContent = `Rendering page ${pageNumber} of ${pdf.numPages}…`;
+
+          try {
+            const page = await pdf.getPage(pageNumber);
+            const sourceViewport = page.getViewport({ scale: 1 });
+            const availableWidth = Math.max(1, stage.clientWidth - 24);
+            const viewport = page.getViewport({ scale: availableWidth / sourceViewport.width });
+            const outputScale = Math.min(window.devicePixelRatio || 1, 2);
+            const context = canvas.getContext('2d', { alpha: false });
+            canvas.width = Math.floor(viewport.width * outputScale);
+            canvas.height = Math.floor(viewport.height * outputScale);
+            canvas.style.width = `${Math.floor(viewport.width)}px`;
+            canvas.style.height = `${Math.floor(viewport.height)}px`;
+            await page.render({
+              canvasContext: context,
+              viewport,
+              transform: outputScale === 1 ? null : [outputScale, 0, 0, outputScale, 0, 0]
+            }).promise;
+            if (version !== renderVersion) return;
+            status.hidden = true;
+          } catch (error) {
+            if (version !== renderVersion) return;
+            console.error('Unable to render the ClineFlow Technical Deck.', error);
+            status.textContent = 'The presentation could not load here. Open the PDF in a new tab.';
+          } finally {
+            if (version === renderVersion) {
+              rendering = false;
+              stage.setAttribute('aria-busy', 'false');
+              updateControls();
+            }
+          }
+        };
+
+        const startDeck = async () => {
+          try {
+            const pdfjsLib = await import('./assets/vendor/pdfjs/pdf.mjs');
+            pdfjsLib.GlobalWorkerOptions.workerSrc = './assets/vendor/pdfjs/pdf.worker.mjs';
+            const loadingTask = pdfjsLib.getDocument({
+              url: deckViewer.dataset.pdfUrl,
+              disableAutoFetch: true,
+              enableScripting: false,
+              isEvalSupported: false,
+              rangeChunkSize: 65536
+            });
+            pdf = await loadingTask.promise;
+            pageInput.max = pdf.numPages;
+            pageTotal.textContent = `of ${pdf.numPages}`;
+            updateControls();
+            await renderPage(2);
+            new ResizeObserver(() => {
+              window.clearTimeout(resizeTimer);
+              resizeTimer = window.setTimeout(() => renderPage(pageNumber), 120);
+            }).observe(stage);
+          } catch (error) {
+            console.error('Unable to load the ClineFlow Technical Deck.', error);
+            status.textContent = 'The presentation could not load here. Open the PDF in a new tab.';
+            stage.setAttribute('aria-busy', 'false');
+          }
+        };
+
+        previous.addEventListener('click', () => renderPage(pageNumber - 1));
+        next.addEventListener('click', () => renderPage(pageNumber + 1));
+        pageInput.addEventListener('change', () => renderPage(pageInput.value));
+
+        if ('IntersectionObserver' in window) {
+          const observer = new IntersectionObserver((entries) => {
+            if (!entries.some((entry) => entry.isIntersecting)) return;
+            observer.disconnect();
+            startDeck();
+          }, { rootMargin: '350px 0px' });
+          observer.observe(deckViewer);
+        } else {
+          startDeck();
+        }
+      }
     </script>
   </body>
 </html>
