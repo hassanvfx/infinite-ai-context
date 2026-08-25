@@ -37,7 +37,7 @@ p { max-width: 72ch; color: var(--muted); }
 .install-action a:hover { color: #fff; border-color: #fff; box-shadow: 0 0 32px rgba(75, 184, 255, .48); }
 .masterclass { margin-top: 0; padding-top: clamp(6.5rem, 15vw, 11rem); }
 .masterclass h2 { margin-bottom: 1.5rem; font-size: clamp(2rem, 4.2vw, 3.5rem); }
-.episodes { margin-top: clamp(4.5rem, 10vw, 8rem); }
+.episodes { margin-top: clamp(6.5rem, 15vw, 11rem); }
 .episodes h2 { margin-bottom: .35rem; font-size: clamp(2.25rem, 5vw, 4rem); }
 .episodes-intro { margin-top: 0; font-size: 1.18rem; }
 .episode-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.5rem, 3vw, 2.5rem); margin-top: 2rem; }
