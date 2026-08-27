@@ -1,5 +1,6 @@
 :root { color-scheme: dark; --ink: #eaf6ff; --muted: #a9c5dd; --blue: #1e9fff; --navy: #071321; --panel: #0d2236; }
 * { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body { margin: 0; color: var(--ink); background: #03080e; font: 17px/1.55 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
 main { padding: 0 0 5rem; }
 .image-hero { width: 100%; max-width: 1500px; margin: 0 auto; padding: clamp(1rem, 3vw, 2.5rem) clamp(1rem, 4vw, 4rem) 0; overflow: hidden; }
@@ -29,12 +30,12 @@ p { max-width: 72ch; color: var(--muted); }
 .copy-feedback { min-height: 1.5em; margin: .7rem 0 0; color: #9edbff; font-size: .88rem; }
 .learn-more-label { margin-top: 2.25rem; }
 .actions { display: flex; flex-wrap: wrap; gap: .85rem; margin-top: 1rem; }
-.button { display: inline-block; padding: .8rem 1.15rem; font-weight: 800; text-decoration: none; border: 1px solid transparent; border-radius: .35rem; }
+.button { display: inline-block; padding: .8rem 1.15rem; font-weight: 800; text-decoration: none; border: 1px solid transparent; border-radius: .35rem; transition: transform .22s ease, filter .22s ease, box-shadow .22s ease; }
 .button-primary { color: #03101c; background: #5fc4ff; box-shadow: 0 0 28px rgba(75, 184, 255, .5); }
 .button-secondary { color: var(--ink); border-color: rgba(95, 196, 255, .8); background: rgba(13, 34, 54, .8); }
 .button:hover { transform: translateY(-1px); filter: brightness(1.08); }
 .install-action { margin: 1.8rem 0 1.65rem; }
-.install-action a { display: inline-flex; align-items: center; gap: .75rem; padding: 1rem 1.3rem; color: var(--ink); font-size: 1.15rem; font-weight: 800; text-decoration: none; letter-spacing: .01em; background: rgba(13, 34, 54, .92); border: 1px solid rgba(95, 196, 255, .88); border-radius: .45rem; box-shadow: 0 0 24px rgba(75, 184, 255, .2); }
+.install-action a { display: inline-flex; align-items: center; gap: .75rem; padding: 1rem 1.3rem; color: var(--ink); font-size: 1.15rem; font-weight: 800; text-decoration: none; letter-spacing: .01em; background: rgba(13, 34, 54, .92); border: 1px solid rgba(95, 196, 255, .88); border-radius: .45rem; box-shadow: 0 0 24px rgba(75, 184, 255, .2); transition: transform .22s ease, color .22s ease, border-color .22s ease, box-shadow .22s ease; }
 .github-icon { width: 1.4rem; height: 1.4rem; fill: currentColor; }
 .install-arrow { color: var(--blue); font-size: 1.35em; }
 .install-action a:hover { color: #fff; border-color: #fff; box-shadow: 0 0 32px rgba(75, 184, 255, .48); }
@@ -141,6 +142,23 @@ p { max-width: 72ch; color: var(--muted); }
 .author-card p { margin: 0 0 .72rem; font-size: .95rem; }
 .author-card-link { display: inline-flex; align-items: center; gap: .55rem; margin-top: .3rem; color: #66c5ff; font-size: .95rem; font-weight: 800; text-decoration: none; }
 .author-card-link:hover { color: #fff; }
+.scroll-top { position: fixed; z-index: 10; right: 1.25rem; bottom: 1.25rem; display: grid; width: 2.85rem; height: 2.85rem; padding: 0; color: #e8f6ff; font: 700 1.2rem/1 system-ui, sans-serif; cursor: pointer; visibility: hidden; background: rgba(7, 25, 42, .86); border: 1px solid rgba(95, 196, 255, .72); border-radius: 50%; box-shadow: 0 0 24px rgba(25, 149, 232, .18); opacity: 0; place-items: center; transform: translateY(.7rem); transition: opacity .2s ease, visibility .2s ease, transform .2s ease, background .2s ease; }
+.scroll-top.is-visible { visibility: visible; opacity: 1; transform: translateY(0); }
+.scroll-top:hover, .scroll-top:focus-visible { background: #0e4e7c; outline: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .motion-ready [data-reveal] { opacity: 0; transform: translateY(1.15rem); transition: opacity .58s ease, transform .58s cubic-bezier(.2, .65, .2, 1); }
+  .motion-ready [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+  .image-hero img { transition: transform .7s cubic-bezier(.2, .65, .2, 1), filter .7s ease; }
+  .image-hero:hover img { filter: saturate(1.04); transform: scale(1.008); }
+  .episode { transition: transform .25s ease, filter .25s ease; }
+  .episode:hover { filter: brightness(1.05); transform: translateY(-.35rem); }
+  .episode .video-frame { transition: box-shadow .25s ease; }
+  .episode:hover .video-frame { box-shadow: 0 0 28px rgba(31, 161, 255, .26); }
+  .masterclass-card, .book-callout-cover img { transition: box-shadow .3s ease, transform .3s ease; }
+  .masterclass-card:hover { box-shadow: 0 0 50px rgba(24, 146, 231, .22); }
+  .book-callout-cover:hover img { transform: translateY(-.35rem); }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 a { color: #71c7ff; }
 nav { margin-bottom: 3.5rem; } nav a { font-weight: 700; text-decoration: none; }
 ul { color: var(--muted); }
