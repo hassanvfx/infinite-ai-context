@@ -162,7 +162,7 @@ p { max-width: 72ch; color: var(--muted); }
 .author-card { padding: clamp(2.75rem, 5.5vw, 4.75rem) 1.5rem; background: #03080e; }
 .author-card-inner { width: min(760px, 100%); margin: auto; display: grid; grid-template-columns: 145px minmax(0, 1fr); align-items: center; gap: clamp(1.5rem, 4vw, 3.25rem); }
 .author-avatar-link { display: block; justify-self: center; border-radius: 50%; }
-.author-avatar { display: block; width: min(145px, 35vw); aspect-ratio: 1; object-fit: cover; object-position: 50% 28%; border: 2px solid rgba(63, 183, 255, .8); border-radius: 50%; box-shadow: 0 0 0 6px rgba(18, 133, 218, .08), 0 0 32px rgba(22, 141, 255, .28); }
+.author-avatar { display: block; width: min(145px, 35vw); aspect-ratio: 1; object-fit: cover; object-position: 50% 28%; border: 0; border-radius: 50%; box-shadow: 0 0 32px rgba(22, 141, 255, .2); }
 .author-card-copy { max-width: 525px; }
 .author-card-kicker { margin: 0 0 .55rem; color: #00c5ff; font-size: .72rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
 .author-card h2 { margin: 0 0 .8rem; color: #fff; font-size: clamp(1.55rem, 3.5vw, 2.45rem); }
