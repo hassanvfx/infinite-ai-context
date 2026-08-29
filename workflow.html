@@ -32,7 +32,7 @@
         <p>Ground the work, make success observable, then preserve the verified handoff for the next chat, agent, or collaborator.</p>
       </header>
 
-      <section class="interlude interlude-workflow" aria-label="ClineFlow workflow overview">
+      <section class="workflow-deck-section" aria-label="ClineFlow workflow overview">
         <p class="interlude-title">ClineFlow: WorkFlow</p>
         <section class="deck-carousel" aria-labelledby="deck-carousel-title">
           <div class="deck-carousel-header">
@@ -43,10 +43,10 @@
             <a class="deck-open-link" href="assets/clineflow-deck-web.pdf" target="_blank" rel="noopener noreferrer">Download PDF ↗</a>
           </div>
           <p class="deck-carousel-intro">Swipe or scroll through the complete 48-page deck.</p>
-          <div class="deck-carousel-track" data-carousel-start-index="2" tabindex="0" aria-label="ClineFlow Technical Deck pages"></div>
+          <div class="deck-carousel-track" data-carousel-start-index="1" tabindex="0" aria-label="ClineFlow Technical Deck pages"></div>
           <div class="deck-carousel-nav" aria-label="Deck page navigation">
             <button class="deck-carousel-button" type="button" data-carousel-prev>← Previous</button>
-            <p>Page <span data-carousel-current>2</span> <span aria-hidden="true">of</span> <span data-carousel-total>48</span></p>
+            <p>Page <span data-carousel-current>1</span> <span aria-hidden="true">of</span> <span data-carousel-total>48</span></p>
             <button class="deck-carousel-button" type="button" data-carousel-next>Next →</button>
           </div>
         </section>
@@ -145,7 +145,7 @@
         figure.innerHTML = `<span>${page} / 48</span><img loading="lazy" decoding="async" src="assets/deck-pages/page-${page}.jpg" alt="ClineFlow Technical Deck, page ${index + 1}">`;
         return figure;
       }));
-      const startIndex = 2;
+      const startIndex = 1;
       const slides = [...carousel.querySelectorAll('.deck-slide')];
       const carouselSection = carousel.closest('.deck-carousel');
       const previous = carouselSection.querySelector('[data-carousel-prev]');
