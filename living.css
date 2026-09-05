@@ -149,20 +149,41 @@ p { text-wrap: pretty; }
 .motion-toggle[aria-pressed="true"]::before { background: #72d4ff; }
 .scroll-top { border-color: var(--hairline); box-shadow: none; }
 
-/* Effects are opt-in; content remains visible if scripts never initialize. */
-html.motion-enabled [data-resolve].resolve-pending { opacity: 0; transform: translateY(16px); }
-html.motion-enabled [data-resolve] { transition: opacity .6s var(--resolve) var(--resolve-delay, 0ms), transform .6s var(--resolve) var(--resolve-delay, 0ms); }
-html.motion-enabled [data-resolve="fade"].resolve-pending { transform: none; }
-html.motion-enabled .agent-compatibility-strip.is-resolved::after { animation: signal-pass 1s var(--resolve) both; }
-html.motion-enabled .knowledge-panel { animation: panel-resolve .7s var(--resolve) both; }
-html.motion-enabled .panel-verify { animation-delay: 70ms; }
-html.motion-enabled .panel-journal { animation-delay: 140ms; }
-html.motion-enabled .hero-network { animation: network-resolve 1s var(--resolve) both; }
-html.motion-enabled .easy-flow-list.is-resolved::before,
-html.motion-enabled .interlude-title.is-resolved::before,
-html.motion-enabled .workflow-teaser.is-resolved::before { animation: connect-line .7s var(--resolve) both; }
+/* Explicit, once-per-visit entrances. Only active units reserve compositor layers. */
+html.motion-enabled.reveals-ready [data-reveal] {
+  --reveal-y: 16px;
+  --reveal-scale: 1;
+  --reveal-duration: 600ms;
+}
+html.motion-enabled.reveals-ready [data-reveal="depth"] { --reveal-y: 24px; --reveal-scale: .98; }
+html.motion-enabled.reveals-ready .reveal-active {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  transition: opacity var(--reveal-duration) var(--resolve) var(--reveal-delay, 0ms),
+    transform var(--reveal-duration) var(--resolve) var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+html.motion-enabled.reveals-ready [data-reveal].reveal-pending {
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0) scale(var(--reveal-scale));
+}
+html.motion-enabled.reveals-ready [data-reveal="fade"].reveal-pending,
+html.motion-enabled.reveals-ready [data-reveal="fade"].reveal-active { transform: none; }
+html.motion-enabled.reveals-ready [data-reveal="fade"].reveal-active { will-change: opacity; }
+html.motion-enabled.reveals-ready [data-reveal].reveal-pending:focus-within { opacity: 1; transform: none; transition: none; }
+html.motion-enabled .agent-compatibility-strip.connect-active::after { animation: signal-pass 1s var(--resolve) both; }
+html.motion-enabled .hero-intro .knowledge-panel { animation: panel-resolve .7s var(--resolve) both; }
+html.motion-enabled .hero-intro .panel-verify { animation-delay: 70ms; }
+html.motion-enabled .hero-intro .panel-journal { animation-delay: 140ms; }
+html.motion-enabled .hero-intro .hero-network { animation: network-resolve 1s var(--resolve) both; }
+html.motion-enabled.reveals-ready .easy-flow-list:not(.is-revealed)::before,
+html.motion-enabled.reveals-ready .workflow-teaser:not(.is-revealed)::before { transform: scaleX(0); }
+html.motion-enabled .easy-flow-list.connect-active::before,
+html.motion-enabled .interlude-title.reveal-active::before,
+html.motion-enabled .workflow-teaser.connect-active::before { animation: connect-line .7s var(--resolve) both; }
 @keyframes signal-pass { 0% { opacity: 0; transform: translateX(-100%); } 35% { opacity: 1; } 100% { opacity: 0; transform: translateX(100%); } }
 @keyframes connect-line { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes connect-line-y { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 @keyframes panel-resolve { from { opacity: 0; translate: 0 18px; } to { opacity: 1; translate: 0 0; } }
 @keyframes network-resolve { from { opacity: 0; } to { opacity: .64; } }
 html.motion-paused *, html.motion-paused *::before, html.motion-paused *::after { animation-play-state: paused !important; }
@@ -172,7 +193,7 @@ html.motion-paused *, html.motion-paused *::before, html.motion-paused *::after 
 }
 html.motion-reduced { scroll-behavior: auto; }
 html.motion-reduced *, html.motion-reduced *::before, html.motion-reduced *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
-html.motion-reduced [data-resolve] { opacity: 1 !important; transform: none !important; }
+html.motion-reduced [data-reveal] { opacity: 1 !important; transform: none !important; }
 html.motion-reduced .hero-rock, html.motion-reduced .hero-network, html.motion-reduced .knowledge-scene,
 html.motion-reduced .knowledge-panel, html.motion-reduced .book-callout-cover img,
 html.motion-reduced .episodes-interlude-art img, html.motion-reduced .button:hover,
@@ -180,7 +201,7 @@ html.motion-reduced .hero-tutorial-link span, html.motion-reduced .workflow-teas
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
-  [data-resolve] { opacity: 1 !important; transform: none !important; }
+  [data-reveal] { opacity: 1 !important; transform: none !important; }
   .button:hover, .hero-tutorial-link span, .workflow-teaser-link span { transform: none; }
 }
 @media (max-width: 1000px) and (min-width: 721px) {
@@ -223,7 +244,10 @@ html.motion-reduced .hero-tutorial-link span, html.motion-reduced .workflow-teas
   .easy-flow-list li { padding: 0 0 0 3.25rem; }
   .easy-flow-number { position: absolute; left: 0; top: 0; margin: 0; }
   .easy-flow-list h3 { padding-top: .25rem; }
-  html.motion-enabled .easy-flow-list.is-resolved::before { animation: none; }
+  html.motion-enabled.reveals-ready [data-reveal] { --reveal-y: 10px; --reveal-duration: 500ms; }
+  html.motion-enabled.reveals-ready [data-reveal="depth"] { --reveal-y: 12px; --reveal-scale: .99; }
+  html.motion-enabled.reveals-ready .easy-flow-list:not(.is-revealed)::before { transform: scaleY(0); transform-origin: top; }
+  html.motion-enabled .easy-flow-list.connect-active::before { animation: connect-line-y .7s var(--resolve) both; transform-origin: top; }
   .interlude { padding: 2rem 1.25rem; }
   .interlude-title { font-size: .75rem; }
   .interlude-lead { font-size: clamp(2.1rem, 8vw, 3.4rem); }

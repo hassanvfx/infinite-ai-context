@@ -249,33 +249,160 @@
     }
   }
 
-  // Resolve individual reading units, never transform video players or tall sections.
-  const revealSelector = '.hero-copy > *, .hero-footer, .quick-install, .agent-compatibility-strip, .easy-flow-header > *, .easy-flow-list, .easy-flow-list > li, .interlude-title, .interlude-lead, .interlude-note, .context-problem-copy > *, .context-problem-image, .masterclass-card-copy > *, .masterclass-blurb > *, .workflow-teaser, .workflow-page-hero > :not(img), .deck-carousel-header, .episode-group-heading, .episode > p, .episode > h3, .book-callout-cover, .book-callout-copy > *, .author-avatar-link, .author-card-copy > *';
-  const revealTargets = [...document.querySelectorAll(revealSelector)];
+  // Explicit reading units reveal once. Groups stagger locally; media only fades.
+  const revealTargets = [...document.querySelectorAll('[data-reveal]')];
+  const pendingReveals = new Set();
+  const queuedReveals = new Set();
+  const activeReveals = new Map();
+  const connectingGroups = new Map();
   let revealObserver;
+  let revealSettle;
+  let heroIntroHandled = false;
+
+  const clearRevealTransition = (target) => {
+    clearTimeout(activeReveals.get(target));
+    activeReveals.delete(target);
+    target.classList.remove('reveal-active');
+    target.style.removeProperty('--reveal-delay');
+  };
+  const markGroup = (target, animate) => {
+    const group = target.closest('[data-reveal-group]');
+    if (!group || group.classList.contains('is-revealed')) return;
+    group.classList.add('is-revealed');
+    if (!animate || !group.matches('.easy-flow-list, .agent-compatibility-strip, .workflow-teaser')) return;
+    group.classList.add('connect-active');
+    connectingGroups.set(group, setTimeout(() => {
+      group.classList.remove('connect-active');
+      connectingGroups.delete(group);
+    }, 1050));
+  };
+  const finishReveal = (target) => {
+    clearRevealTransition(target);
+    revealObserver?.unobserve(target);
+    pendingReveals.delete(target);
+    queuedReveals.delete(target);
+    target.classList.remove('reveal-pending');
+    target.classList.add('is-revealed');
+    markGroup(target, false);
+  };
+  const revealAll = () => {
+    revealObserver?.disconnect();
+    queuedReveals.clear();
+    revealTargets.forEach(finishReveal);
+    connectingGroups.forEach((timer, group) => {
+      clearTimeout(timer);
+      group.classList.remove('connect-active');
+    });
+    connectingGroups.clear();
+    root.classList.remove('reveals-ready');
+  };
+  const beginReveal = (target, delay) => {
+    if (!pendingReveals.has(target)) return;
+    pendingReveals.delete(target);
+    revealObserver?.unobserve(target);
+    target.style.setProperty('--reveal-delay', delay + 'ms');
+    target.classList.add('reveal-active');
+    target.classList.remove('reveal-pending');
+    target.classList.add('is-revealed');
+    markGroup(target, true);
+    activeReveals.set(target, setTimeout(() => clearRevealTransition(target),
+      (mobile.matches ? 500 : 600) + delay + 80));
+  };
+  const flushReveals = () => {
+    if (reduced) return revealAll();
+    try {
+      const batches = new Map();
+      queuedReveals.forEach((target) => {
+        if (!pendingReveals.has(target)) return;
+        const rect = target.getBoundingClientRect();
+        if (rect.bottom <= 0) return finishReveal(target);
+        const group = target.closest('[data-reveal-group]') || target;
+        // Grid articles share their row, while stacked mobile articles start afresh.
+        const row = target.closest('.episode');
+        const rowTop = row ? row.offsetTop : 0;
+        if (!batches.has(group)) batches.set(group, new Map());
+        const rows = batches.get(group);
+        if (!rows.has(rowTop)) rows.set(rowTop, []);
+        rows.get(rowTop).push({ target, rect });
+      });
+      queuedReveals.clear();
+      batches.forEach((rows) => rows.forEach((items) => {
+        items.sort((a, b) => Math.abs(a.rect.top - b.rect.top) > 12
+          ? a.rect.top - b.rect.top : a.rect.left - b.rect.left);
+        items.forEach(({ target }, index) => beginReveal(target,
+          Math.min(index, 3) * (mobile.matches ? 40 : 60)));
+      }));
+    } catch {
+      // Enhancement failures must never leave readable content transparent.
+      revealAll();
+    }
+  };
+  const reconcileReveals = () => {
+    if (reduced || document.hidden) return;
+    pendingReveals.forEach((target) => {
+      const rect = target.getBoundingClientRect();
+      if (!rect.height || rect.bottom <= 0) finishReveal(target);
+      else if (rect.top < innerHeight * .9) queuedReveals.add(target);
+    });
+    if (queuedReveals.size) schedule(flushReveals);
+  };
   const setupReveals = () => {
     revealObserver?.disconnect();
-    if (reduced || !('IntersectionObserver' in window)) {
-      revealTargets.forEach((el) => el.classList.remove('resolve-pending'));
-      return;
-    }
-    revealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(({ target, isIntersecting }) => {
-        if (!isIntersecting) return;
-        target.classList.remove('resolve-pending');
-        target.classList.add('is-resolved');
-        observer.unobserve(target);
+    queuedReveals.clear();
+    if (reduced || !('IntersectionObserver' in window)) return revealAll();
+    try {
+      revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(({ target, isIntersecting }) => {
+          if (isIntersecting && pendingReveals.has(target)) queuedReveals.add(target);
+        });
+        if (queuedReveals.size) schedule(flushReveals);
+      }, { threshold: 0, rootMargin: '0px 0px -' + Math.round(innerHeight * .1) + 'px 0px' });
+      revealTargets.forEach((target) => {
+        if (target.classList.contains('is-revealed')) return;
+        const rect = target.getBoundingClientRect();
+        // First viewport, deep links and restored positions stay immediately readable.
+        if (!rect.height || rect.top < innerHeight) return finishReveal(target);
+        pendingReveals.add(target);
+        target.classList.add('reveal-pending');
+        revealObserver.observe(target);
       });
-    }, { threshold: 0, rootMargin: '0px 0px -24px 0px' });
-    revealTargets.forEach((target, index) => {
-      if (target.classList.contains('is-resolved')) return;
-      target.dataset.resolve = target.matches('.easy-flow-list') ? 'fade' : '';
-      target.style.setProperty('--resolve-delay', (index % 3) * 70 + 'ms');
-      // Never hide the first viewport or content already passed on a deep link.
-      if (target.getBoundingClientRect().top >= innerHeight) target.classList.add('resolve-pending');
-      revealObserver.observe(target);
+      root.classList.add('reveals-ready');
+    } catch {
+      revealAll();
+    }
+  };
+  const revealDestination = (destination) => {
+    if (!(destination instanceof Element)) return;
+    const ancestor = destination.closest('[data-reveal]');
+    if (ancestor) finishReveal(ancestor);
+    const top = destination.getBoundingClientRect().top;
+    destination.querySelectorAll('[data-reveal]').forEach((target) => {
+      if (target.getBoundingClientRect().top - top < innerHeight * .85) finishReveal(target);
     });
   };
+  const revealHash = () => {
+    if (!location.hash) return;
+    try { revealDestination(document.getElementById(decodeURIComponent(location.hash.slice(1)))); } catch { /* malformed hash */ }
+  };
+  document.addEventListener('focusin', (event) => revealDestination(event.target));
+  document.addEventListener('pointerdown', (event) => {
+    const target = event.target.closest?.('[data-reveal]');
+    if (target) finishReveal(target);
+  }, { passive: true });
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('a[href]');
+    if (!link) return;
+    try {
+      const url = new URL(link.href, location.href);
+      if (url.origin === location.origin && url.pathname === location.pathname && url.hash)
+        revealDestination(document.getElementById(decodeURIComponent(url.hash.slice(1))));
+    } catch { /* leave normal link behavior intact */ }
+  });
+  document.addEventListener('transitionend', (event) => {
+    if (event.propertyName === 'opacity' && activeReveals.has(event.target)) clearRevealTransition(event.target);
+  });
+  window.addEventListener('hashchange', () => { revealHash(); schedule(reconcileReveals); });
+  window.addEventListener('pageshow', () => { revealHash(); schedule(reconcileReveals); });
   const motionToggle = document.querySelector('.motion-toggle');
   const applyMotion = () => {
     reduced = systemMotion.matches || manualReduced;
@@ -292,6 +419,13 @@
       });
     }
     setupReveals();
+    if (!heroIntroHandled) {
+      heroIntroHandled = true;
+      if (hero && !reduced) {
+        hero.classList.add('hero-intro');
+        setTimeout(() => hero.classList.remove('hero-intro'), 1100);
+      }
+    }
     schedule(updatePage);
   };
   motionToggle.addEventListener('click', () => {
@@ -301,12 +435,22 @@
   });
   systemMotion.addEventListener('change', applyMotion);
   window.addEventListener('storage', (event) => { if (event.key === motionKey) { manualReduced = event.newValue === 'true'; applyMotion(); } });
-  window.addEventListener('scroll', () => schedule(updatePage), { passive: true });
-  window.addEventListener('resize', () => { schedule(updatePage); carouselUpdates.forEach(schedule); }, { passive: true });
+  window.addEventListener('scroll', () => {
+    schedule(updatePage);
+    clearTimeout(revealSettle);
+    if (pendingReveals.size) revealSettle = setTimeout(() => schedule(reconcileReveals), 120);
+  }, { passive: true });
+  window.addEventListener('resize', () => { schedule(updatePage); schedule(setupReveals); carouselUpdates.forEach(schedule); }, { passive: true });
   document.addEventListener('visibilitychange', () => {
     root.classList.toggle('motion-paused', document.hidden);
-    if (document.hidden) { cancelAnimationFrame(frame); frame = 0; }
-    else schedule(updatePage);
+    if (document.hidden) {
+      cancelAnimationFrame(frame); frame = 0;
+      clearTimeout(revealSettle);
+      [...activeReveals.keys()].forEach(finishReveal);
+    } else {
+      schedule(updatePage);
+      schedule(reconcileReveals);
+    }
   });
   applyMotion();
 })();
