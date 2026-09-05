@@ -40,7 +40,7 @@ const scrollPage = async (page) => {
         await checkWidth(page, `${route || 'home'} ${width}`);
         await scrollPage(page);
         await checkWidth(page, `${route || 'home'} ${width} after scroll`);
-        assert.equal(await page.locator('.resolve-pending').count(), 0, 'all reading units revealed: ' + JSON.stringify(await page.locator('.resolve-pending').evaluateAll((els) => els.map((el) => ({tag:el.tagName, text:el.textContent.slice(0,65), top:el.getBoundingClientRect().top})))));
+        assert.equal(await page.locator('.reveal-pending').count(), 0, 'all reading units revealed: ' + JSON.stringify(await page.locator('.reveal-pending').evaluateAll((els) => els.map((el) => ({tag:el.tagName, text:el.textContent.slice(0,65), top:el.getBoundingClientRect().top})))));
         await page.evaluate(() => scrollTo({ top: 0, behavior: 'instant' }));
         await page.waitForTimeout(250);
         if ([390, 1440].includes(width)) await page.screenshot({ path: path.join(output, `${route ? 'workflow' : 'home'}-${width}.png`), fullPage: false });
