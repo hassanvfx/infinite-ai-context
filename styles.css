@@ -172,19 +172,6 @@ p { max-width: 72ch; color: var(--muted); }
 .scroll-top { position: fixed; z-index: 10; right: 1.25rem; bottom: 1.25rem; display: grid; width: 2.85rem; height: 2.85rem; padding: 0; color: #e8f6ff; font: 700 1.2rem/1 system-ui, sans-serif; cursor: pointer; visibility: hidden; background: rgba(7, 25, 42, .86); border: 1px solid rgba(95, 196, 255, .72); border-radius: 50%; box-shadow: 0 0 24px rgba(25, 149, 232, .18); opacity: 0; place-items: center; transform: translateY(.7rem); transition: opacity .2s ease, visibility .2s ease, transform .2s ease, background .2s ease; }
 .scroll-top.is-visible { visibility: visible; opacity: 1; transform: translateY(0); }
 .scroll-top:hover, .scroll-top:focus-visible { background: #0e4e7c; outline: none; }
-@media (prefers-reduced-motion: no-preference) {
-  .motion-ready [data-reveal] { opacity: 0; transform: translateY(1.15rem); transition: opacity .58s ease, transform .58s cubic-bezier(.2, .65, .2, 1); }
-  .motion-ready [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
-  .image-hero img { transition: transform .7s cubic-bezier(.2, .65, .2, 1), filter .7s ease; }
-  .image-hero:hover img { filter: saturate(1.04); transform: scale(1.008); }
-  .episode { transition: transform .25s ease, filter .25s ease; }
-  .episode:hover { filter: brightness(1.05); transform: translateY(-.35rem); }
-  .episode .video-frame { transition: box-shadow .25s ease; }
-  .episode:hover .video-frame { box-shadow: 0 0 28px rgba(31, 161, 255, .26); }
-  .masterclass-card, .book-callout-cover img { transition: box-shadow .3s ease, transform .3s ease; }
-.masterclass-card:hover { box-shadow: 0 0 50px rgba(24, 146, 231, .22); }
-.book-callout-cover:hover img { transform: translateY(-.35rem); }
-}
 .workflow-teaser { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(13rem, .85fr); gap: 1rem 3rem; align-items: end; margin: clamp(5rem, 10vw, 8.5rem) 0 clamp(1.5rem, 4vw, 3rem); padding: clamp(1.5rem, 4vw, 3rem); background: linear-gradient(120deg, rgba(7, 34, 57, .68), rgba(3, 12, 20, .52)); border-top: 1px solid rgba(95, 196, 255, .35); border-bottom: 1px solid rgba(95, 196, 255, .18); }
 .workflow-teaser .eyebrow { grid-column: 1 / -1; margin: 0; }
 .workflow-teaser h2 { max-width: 13ch; margin: 0; color: #f2f9ff; font-size: clamp(2rem, 4.5vw, 3.65rem); }
