@@ -74,6 +74,7 @@ p { text-wrap: pretty; }
 .quick-install { background: var(--surface); border: 1px solid var(--hairline); border-radius: .8rem; padding: clamp(1.25rem, 3vw, 2rem); transition: border-color .22s ease, box-shadow .22s ease; }
 .quick-install.is-copied { border-color: #64caff; box-shadow: 0 0 25px rgba(41, 178, 244, .18); }
 .quick-install pre { background: #030c14; border-color: var(--hairline); }
+.quick-install-caption { margin: 0 0 1rem; color: var(--muted); font-size: .9rem; font-weight: 400; line-height: 1.6; }
 .copy-prompt { min-height: 2.5rem; font-weight: 550; font-size: .8rem; border-color: var(--hairline); }
 .copy-feedback { color: #a8d0e8; font-size: .875rem; }
 .agent-compatibility-strip { position: relative; isolation: isolate; margin: 2.25rem auto 0; max-width: 740px; overflow: hidden; }
